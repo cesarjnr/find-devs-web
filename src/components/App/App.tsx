@@ -3,6 +3,7 @@ import React from 'react';
 import '../../global.css';
 import './App.css';
 import './Sidebar.css';
+import './Main.css';
 
 const App = () => (
   <div id="app">
@@ -34,6 +35,66 @@ const App = () => (
         <button type="submit">Salvar</button>
       </form>
     </aside>
+
+    <main>
+      <ul>
+        <li className="dev-item">
+          <header>
+            <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
+            <div className="user-info">
+              <strong>César Júnior</strong>
+              <span>Node.js, ReactJS, React Native</span>
+            </div>
+          </header>
+          <p>
+            Software Developer (Node.js / ReactJS) at Grupo Unicad.
+          </p>
+          <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
+        </li>
+
+        <li className="dev-item">
+          <header>
+            <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
+            <div className="user-info">
+              <strong>César Júnior</strong>
+              <span>Node.js, ReactJS, React Native</span>
+            </div>
+          </header>
+          <p>
+            Software Developer (Node.js / ReactJS) at Grupo Unicad.
+          </p>
+          <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
+        </li>
+
+        <li className="dev-item">
+          <header>
+            <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
+            <div className="user-info">
+              <strong>César Júnior</strong>
+              <span>Node.js, ReactJS, React Native</span>
+            </div>
+          </header>
+          <p>
+            Software Developer (Node.js / ReactJS) at Grupo Unicad.
+          </p>
+          <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
+        </li>
+
+        <li className="dev-item">
+          <header>
+            <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
+            <div className="user-info">
+              <strong>César Júnior</strong>
+              <span>Node.js, ReactJS, React Native</span>
+            </div>
+          </header>
+          <p>
+            Software Developer (Node.js / ReactJS) at Grupo Unicad.
+          </p>
+          <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
+        </li>
+      </ul>
+    </main>
   </div>
 );
 
