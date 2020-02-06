@@ -22,6 +22,7 @@ module.exports = {
     },
     plugins: ['react', 'import', 'jsx-a11y'],
     rules: {
+      'arrow-parens': ['error', 'as-needed'],
       'react/jsx-filename-extension': [
           'error',
           {
