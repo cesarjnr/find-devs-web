@@ -1,6 +1,8 @@
 import React from 'react';
 
 import '../../global.css';
+import './App.css';
+import './Sidebar.css';
 
 const App = () => (
   <div id="app">
@@ -24,7 +26,7 @@ const App = () => (
           </label>
 
           <label htmlFor="longitude">
-            Latitude
+            Longitude
             <input name="longitude" id="longitude" required />
           </label>
         </div>
