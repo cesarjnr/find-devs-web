@@ -22,22 +22,26 @@ module.exports = {
     },
     plugins: ['react', 'import', 'jsx-a11y'],
     rules: {
-        'react/jsx-filename-extension': [
-            'error',
-            {
-                extensions: ['.tsx']
-            }
-        ],
-        'import/extensions': [
-            'error',
-            'ignorePackages',
-            {
-                'tsx': 'never'
-            }
-        ],
-        'import/prefer-default-export': 'off',
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/explicit-member-accessibility': 'off'
+      'arrow-parens': ['error', 'as-needed'],
+      'no-underscore-dangle': 'off',
+      'react/jsx-filename-extension': [
+          'error',
+          {
+              extensions: ['.tsx']
+          }
+      ],
+      'import/extensions': [
+          'error',
+          'ignorePackages',
+          {
+              'tsx': 'never',
+              'ts': 'never'
+          }
+      ],
+      'import/prefer-default-export': 'off',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/explicit-member-accessibility': 'off',
+      '@typescript-eslint/camelcase': 'off'
     },
     settings: {
         'import/parsers': {
