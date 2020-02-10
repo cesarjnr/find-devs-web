@@ -7,7 +7,21 @@ import './App.css';
 import './Sidebar.css';
 import './Main.css';
 
+interface DevInterface {
+  _id: string;
+  github_username: string;
+  avatar_url: string;
+  bio: string;
+  techs: string[];
+  location: {
+    coordinates: [number, number];
+    _id: string;
+    type: 'Point'
+  }
+}
+
 const App = () => {
+  const [devs, setDevs] = useState<DevInterface[]>([]);
   const [github_username, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
   const [latitude, setLatitude] = useState('');
@@ -28,6 +42,16 @@ const App = () => {
     );
   }, []);
 
+  useEffect(() => {
+    async function fetchDevs() {
+      const response = await api.get('/devs');
+
+      setDevs(response.data);
+    }
+
+    fetchDevs();
+  });
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
@@ -40,6 +64,7 @@ const App = () => {
 
     setGithubUsername('');
     setTechs('');
+    setDevs([...devs, response.data]);
   }
 
   return (
@@ -101,61 +126,19 @@ const App = () => {
 
       <main>
         <ul>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
-              <div className="user-info">
-                <strong>César Júnior</strong>
-                <span>Node.js, ReactJS, React Native</span>
-              </div>
-            </header>
-            <p>
-              Software Developer (Node.js / ReactJS) at Grupo Unicad.
-            </p>
-            <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
-              <div className="user-info">
-                <strong>César Júnior</strong>
-                <span>Node.js, ReactJS, React Native</span>
-              </div>
-            </header>
-            <p>
-              Software Developer (Node.js / ReactJS) at Grupo Unicad.
-            </p>
-            <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
-              <div className="user-info">
-                <strong>César Júnior</strong>
-                <span>Node.js, ReactJS, React Native</span>
-              </div>
-            </header>
-            <p>
-              Software Developer (Node.js / ReactJS) at Grupo Unicad.
-            </p>
-            <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/28472875?s=460&v=4" alt="avatar" />
-              <div className="user-info">
-                <strong>César Júnior</strong>
-                <span>Node.js, ReactJS, React Native</span>
-              </div>
-            </header>
-            <p>
-              Software Developer (Node.js / ReactJS) at Grupo Unicad.
-            </p>
-            <a href="https://github.com/cesarjnr">Acessar perfil no Github</a>
-          </li>
+          {devs.map(dev => (
+            <li className="dev-item">
+              <header>
+                <img src={dev.avatar_url} alt="avatar" />
+                <div className="user-info">
+                  <strong>{dev.github_username}</strong>
+                  <span>{dev.techs.join(', ')}</span>
+                </div>
+              </header>
+              <p>{dev.bio}</p>
+              <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no Github</a>
+            </li>
+          ))}
         </ul>
       </main>
     </div>
