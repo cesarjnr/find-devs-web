@@ -1,24 +1,12 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 
-import api from '../../services/api';
-
 import '../../global.css';
 import './App.css';
 import './Sidebar.css';
 import './Main.css';
-
-interface DevInterface {
-  _id: string;
-  github_username: string;
-  avatar_url: string;
-  bio: string;
-  techs: string[];
-  location: {
-    coordinates: [number, number];
-    _id: string;
-    type: 'Point'
-  }
-}
+import api from '../../services/api';
+import DevInterface from '../../interfaces/DevInterface';
+import DevItem from './DevItem/index';
 
 const App = () => {
   const [devs, setDevs] = useState<DevInterface[]>([]);
@@ -127,17 +115,7 @@ const App = () => {
       <main>
         <ul>
           {devs.map(dev => (
-            <li className="dev-item">
-              <header>
-                <img src={dev.avatar_url} alt="avatar" />
-                <div className="user-info">
-                  <strong>{dev.github_username}</strong>
-                  <span>{dev.techs.join(', ')}</span>
-                </div>
-              </header>
-              <p>{dev.bio}</p>
-              <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no Github</a>
-            </li>
+            <DevItem key={dev._id} dev={dev} />
           ))}
         </ul>
       </main>

@@ -23,6 +23,7 @@ module.exports = {
     plugins: ['react', 'import', 'jsx-a11y'],
     rules: {
       'arrow-parens': ['error', 'as-needed'],
+      'no-underscore-dangle': 'off',
       'react/jsx-filename-extension': [
           'error',
           {
