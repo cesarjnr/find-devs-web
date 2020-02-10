@@ -1,6 +1,6 @@
 /* eslint-disable no-extra-semi */
 /* eslint-disable semi */
-export default interface DevInterface {
+export interface DevInterface {
     _id: string;
     github_username: string;
     avatar_url: string;
@@ -12,3 +12,10 @@ export default interface DevInterface {
       type: 'Point'
     }
   };
+
+export interface DevFormDataInterface {
+  github_username: string;
+  techs: string;
+  latitude: string;
+  longitude: string;
+};
