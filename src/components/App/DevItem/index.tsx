@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './styles.css';
-import { DevInterface } from '../../../interfaces/Dev';
+import { DevInterface } from '../../../store/ducks/devs/types';
 
 interface Props {
     dev: DevInterface

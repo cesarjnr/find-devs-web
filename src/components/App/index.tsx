@@ -5,7 +5,7 @@ import './index.css';
 import api from '../../services/api';
 import DevForm from './DevForm';
 import DevItem from './DevItem';
-import { DevInterface, DevFormDataInterface } from '../../interfaces/Dev';
+import { DevInterface, DevFormDataInterface } from '../../store/ducks/devs/types';
 
 const App = () => {
   const [devs, setDevs] = useState<DevInterface[]>([]);

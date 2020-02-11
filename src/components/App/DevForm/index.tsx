@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 
 import './styles.css';
-import { DevFormDataInterface } from '../../../interfaces/Dev';
+import { DevFormDataInterface } from '../../../store/ducks/devs/types';
 
 interface Props {
     parentHandleSubmit(formData: DevFormDataInterface): Promise<void>;
