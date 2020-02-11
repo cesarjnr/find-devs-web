@@ -6,7 +6,7 @@ export enum DevsTypes {
 }
 
 // Data Types
-export interface DevInterface {
+export interface Dev {
     _id: string;
     github_username: string;
     avatar_url: string;
@@ -19,7 +19,7 @@ export interface DevInterface {
     }
 }
 
-export interface DevFormDataInterface {
+export interface DevFormData {
     github_username: string;
     techs: string;
     latitude: string;
@@ -27,8 +27,8 @@ export interface DevFormDataInterface {
 }
 
 // State Type
-export interface DevsStateInterface {
-    readonly data: DevInterface[];
+export interface DevsState {
+    readonly data: Dev[];
     readonly loading: boolean;
     readonly error: boolean;
 }

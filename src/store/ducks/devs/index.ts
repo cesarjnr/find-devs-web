@@ -1,14 +1,14 @@
 import { Reducer } from 'redux';
 
-import { DevsTypes, DevsStateInterface } from './types';
+import { DevsTypes, DevsState } from './types';
 
-const INITIAL_STATE: DevsStateInterface = {
+const INITIAL_STATE: DevsState = {
   data: [],
   error: false,
   loading: false,
 };
 
-const reducer: Reducer<DevsStateInterface> = (state = INITIAL_STATE, action) => {
+const reducer: Reducer<DevsState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case DevsTypes.FETCH_REQUEST:
       return { ...state, loading: true };
