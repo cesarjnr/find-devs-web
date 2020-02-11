@@ -1,10 +1,10 @@
 import React from 'react';
 
 import './styles.css';
-import { DevInterface } from '../../../store/ducks/devs/types';
+import { Dev } from '../../../store/ducks/devs/types';
 
 interface Props {
-    dev: DevInterface
+    dev: Dev
 }
 
 const DevItem = ({ dev }: Props) => (
