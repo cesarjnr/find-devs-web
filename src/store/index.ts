@@ -1,5 +1,8 @@
-import { createStore, applyMiddleware, Store } from 'redux';
+import {
+  createStore, applyMiddleware, Store,
+} from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { DevsState } from './ducks/devs/types';
 import rootReducer from './ducks/rootReducer';
@@ -11,7 +14,10 @@ export interface ApplicationState {
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store: Store<ApplicationState> = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const store: Store<ApplicationState> = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
+);
 
 sagaMiddleware.run(rootSaga);
 
