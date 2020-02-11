@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import '../../global.css';
 import './index.css';
-import api from '../../services/api';
 import DevForm from './DevForm';
 import DevItem from './DevItem';
-import { Dev, DevFormData } from '../../store/ducks/devs/types';
+import { DevsTypes, Dev, DevFormData } from '../../store/ducks/devs/types';
+import { ApplicationState } from '../../store/index';
 
 const App = () => {
-  const [devs, setDevs] = useState<Dev[]>([]);
+  const dispatch = useDispatch();
+  const devs = useSelector((state: ApplicationState) => state.devs.data);
 
   useEffect(() => {
-    async function fetchDevs() {
-      const response = await api.get('/devs');
-
-      setDevs(response.data);
-    }
-
-    fetchDevs();
-  });
+    dispatch({
+      type: DevsTypes.FETCH_REQUEST,
+    });
+  }, [dispatch]);
 
   const addDev = async (formData: DevFormData) => {
-    const response = await api.post('/devs', formData);
+    // const response = await api.post('/devs', formData);
 
-    setDevs([...devs, response.data]);
+    // setDevs([...devs, response.data]);
   };
 
   return (
