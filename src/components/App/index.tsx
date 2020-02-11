@@ -5,10 +5,10 @@ import './index.css';
 import api from '../../services/api';
 import DevForm from './DevForm';
 import DevItem from './DevItem';
-import { DevInterface, DevFormDataInterface } from '../../store/ducks/devs/types';
+import { Dev, DevFormData } from '../../store/ducks/devs/types';
 
 const App = () => {
-  const [devs, setDevs] = useState<DevInterface[]>([]);
+  const [devs, setDevs] = useState<Dev[]>([]);
 
   useEffect(() => {
     async function fetchDevs() {
@@ -20,7 +20,7 @@ const App = () => {
     fetchDevs();
   });
 
-  const addDev = async (formData: DevFormDataInterface) => {
+  const addDev = async (formData: DevFormData) => {
     const response = await api.post('/devs', formData);
 
     setDevs([...devs, response.data]);
