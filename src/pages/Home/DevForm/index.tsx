@@ -36,10 +36,12 @@ const DevForm = ({ parentHandleSubmit }: Props) => {
     );
   }, []);
 
-  const handleSubmit = (values: FormikValues, { setSubmitting }: FormikHelpers<any>) => {
+  const handleSubmit = (values: FormikValues, { setSubmitting, resetForm }: FormikHelpers<any>) => {
     parentHandleSubmit(values);
 
     setSubmitting(false);
+
+    resetForm();
   };
 
   return (
