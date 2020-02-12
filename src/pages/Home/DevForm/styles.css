@@ -6,22 +6,6 @@ form > :not(:first-child) {
     margin-top: 20px;
 }
 
-form label {
-    color: #ACACAC;
-    font-size: 14px;
-    font-weight: bold;
-    display: block;
-}
-
-form label input {
-    width: 100%;
-    height: 32px;
-    font-size: 14px;
-    color: #666;
-    border: 0;
-    border-bottom: 1px solid #EEE;
-}
-
 form .input-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
