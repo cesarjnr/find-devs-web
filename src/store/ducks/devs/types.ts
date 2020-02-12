@@ -2,7 +2,9 @@
 export enum DevsTypes {
     FETCH_REQUEST = '@devs/FETCH_REQUEST',
     FETCH_SUCCESS = '@devs/FETCH_SUCCESS',
-    FETCH_FAILURE = '@devs/FETCH_FAILURE'
+    FETCH_FAILURE = '@devs/FETCH_FAILURE',
+    STORE_REQUEST = '@devs/STORE_REQUEST',
+    STORE_SUCCESS = '@devs/STORE_SUCCESS'
 }
 
 // Data Types

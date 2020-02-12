@@ -20,6 +20,8 @@ const reducer: Reducer<DevsState> = (state = INITIAL_STATE, action) => {
       return {
         ...state, loading: false, error: false, data: [],
       };
+    case DevsTypes.STORE_SUCCESS:
+      return { ...state, data: [...state.data, action.payload.data] };
     default:
       return state;
   }

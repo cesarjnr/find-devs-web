@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import '../../global.css';
 import './styles.css';
 import DevForm from './DevForm';
 import DevItem from './DevItem';
-import { DevsTypes, Dev, DevFormData } from '../../store/ducks/devs/types';
+import { DevsTypes, DevFormData } from '../../store/ducks/devs/types';
 import { ApplicationState } from '../../store/index';
 
 const Home = () => {
@@ -17,9 +17,12 @@ const Home = () => {
   }, [dispatch]);
 
   const addDev = async (formData: DevFormData) => {
-    // const response = await api.post('/devs', formData);
-
-    // setDevs([...devs, response.data]);
+    dispatch({
+      type: DevsTypes.STORE_REQUEST,
+      payload: {
+        formData,
+      },
+    });
   };
 
   return (
