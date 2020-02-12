@@ -21,13 +21,6 @@ export interface Dev {
     }
 }
 
-export interface DevFormData {
-    github_username: string;
-    techs: string;
-    latitude: string;
-    longitude: string;
-}
-
 // State Type
 export interface DevsState {
     readonly data: Dev[];

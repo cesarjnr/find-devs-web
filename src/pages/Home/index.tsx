@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FormikValues } from 'formik';
 
 import '../../global.css';
 import './styles.css';
 import DevForm from './DevForm';
 import DevItem from './DevItem';
-import { DevsTypes, DevFormData } from '../../store/ducks/devs/types';
+import { DevsTypes } from '../../store/ducks/devs/types';
 import { ApplicationState } from '../../store/index';
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
     dispatch({ type: DevsTypes.FETCH_REQUEST });
   }, [dispatch]);
 
-  const addDev = async (formData: DevFormData) => {
+  const addDev = (formData: FormikValues) => {
     dispatch({
       type: DevsTypes.STORE_REQUEST,
       payload: {
