@@ -1,23 +1,31 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useEffect, useRef } from 'react';
+import {
+  Formik, Form, Field, FormikValues, FormikHelpers,
+} from 'formik';
 
 import './styles.css';
-import { DevFormData } from '../../../store/ducks/devs/types';
+import CustomField from './CustomField';
 
 interface Props {
-    parentHandleSubmit(formData: DevFormData): Promise<void>;
+    parentHandleSubmit(formData: FormikValues): void;
 }
 
 const DevForm = ({ parentHandleSubmit }: Props) => {
-  const [github_username, setGithubUsername] = useState('');
-  const [techs, setTechs] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+  const initialValues = useRef({
+    github_username: '',
+    techs: '',
+    latitude: '',
+    longitude: '',
+  });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       position => {
-        setLatitude(position.coords.latitude.toString());
-        setLongitude(position.coords.longitude.toString());
+        initialValues.current = {
+          ...initialValues.current,
+          latitude: position.coords.latitude.toString(),
+          longitude: position.coords.longitude.toString(),
+        };
       },
       err => {
         console.log(err);
@@ -28,72 +36,28 @@ const DevForm = ({ parentHandleSubmit }: Props) => {
     );
   }, []);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (values: FormikValues, { setSubmitting }: FormikHelpers<any>) => {
+    parentHandleSubmit(values);
 
-    await parentHandleSubmit({
-      github_username,
-      techs,
-      latitude,
-      longitude,
-    });
-
-    setGithubUsername('');
-    setTechs('');
+    setSubmitting(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="github_username">
-        Usuário do Github
-        <input
-          name="github_username"
-          id="github_username"
-          value={github_username}
-          onChange={e => setGithubUsername(e.target.value)}
-          required
-        />
-      </label>
-
-      <label htmlFor="techs">
-        Tecnologias
-        <input
-          name="techs"
-          id="techs"
-          value={techs}
-          onChange={e => setTechs(e.target.value)}
-          required
-        />
-      </label>
-
-      <div className="input-group">
-        <label htmlFor="latitude">
-          Latitude
-          <input
-            type="number"
-            name="latitude"
-            id="latitude"
-            value={latitude}
-            onChange={e => setLatitude(e.target.value)}
-            required
-          />
-        </label>
-
-        <label htmlFor="longitude">
-          Longitude
-          <input
-            type="number"
-            name="longitude"
-            id="longitude"
-            value={longitude}
-            onChange={e => setLongitude(e.target.value)}
-            required
-          />
-        </label>
-      </div>
-
-      <button type="submit">Salvar</button>
-    </form>
+    <Formik
+      initialValues={initialValues.current}
+      onSubmit={handleSubmit}
+      enableReinitialize
+    >
+      <Form>
+        <Field type="text" name="github_username" label="Usuário do Github" component={CustomField} />
+        <Field type="text" name="techs" label="Tecnologias" component={CustomField} />
+        <div className="input-group">
+          <Field type="text" name="latitude" label="Latitude" component={CustomField} />
+          <Field type="text" name="longitude" label="Longitude" component={CustomField} />
+        </div>
+        <button type="submit">Salvar</button>
+      </Form>
+    </Formik>
   );
 };
 
