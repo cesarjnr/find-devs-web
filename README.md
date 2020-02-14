@@ -8,7 +8,7 @@
 
 <ul>
     <li>ReactJS</li>
-    <li>Typescript<>
+    <li>Typescript</li>
     <li>Redux</li>
     <li>Redux Saga</li>
     <li>Formik</li>
